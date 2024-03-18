@@ -1,0 +1,87 @@
+﻿@model clinic.Models.Consulta
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+
+<div class="card p-4 mt-3">
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Editar Consulta</h4>
+        </div>
+    </div>
+
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+
+        <div class="row mt-2">
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label">Data e Hora da Consulta</label>
+                    <input asp-for="DataHoraConsulta" class="form-control" />
+                    <span asp-validation-for="DataHoraConsulta" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label">Data e Hora do Retorno</label>
+                    <input asp-for="DataHoraRetorno" class="form-control" />
+                    <span asp-validation-for="DataHoraRetorno" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">Status</label>
+                    <input asp-for="Status" class="form-control" />
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="fk_PacienteID" class="control-label"></label>
+                <select asp-for="fk_PacienteID" class="form-control" asp-items="ViewBag.fk_PacienteID"></select>
+                <span asp-validation-for="fk_PacienteID" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label">Observações Administração</label>
+                    <textarea asp-for="ObservacoesAdm" class="form-control" rows="6"></textarea>
+                    <span asp-validation-for="ObservacoesAdm" class="text-danger"></span>
+                </div>
+            </div>
+        </div
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label">Observações do Médico</label>
+                    <textarea asp-for="ObservacoesMedica" class="form-control" rows="6"></textarea>
+                    <span asp-validation-for="ObservacoesMedica" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="submit" style="float: right" value="Editar Registro" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
